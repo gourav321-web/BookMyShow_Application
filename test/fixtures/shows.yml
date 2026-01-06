@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_time: 2026-01-06 15:30:55
+  available_seats: 1
+  seat_price: 9.99
+
+two:
+  show_time: 2026-01-06 15:30:55
+  available_seats: 1
+  seat_price: 9.99
