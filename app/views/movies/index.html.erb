@@ -1,2 +1,21 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<%# <h1>Movie_dshboard</h1>
+<p>List of movies</p>
+ %>
+
+<table>
+		<tr>
+			<th>title</th>
+			<th>description</th>
+			<th>duration</th>
+			<th colspan="3"></th>
+		</tr>
+
+		<%@movies.each do |movie|%>
+		  <tr>
+		  	<td><%=movie.title%>&nbsp;&nbsp;</td>
+		  	<td><%=movie.description%>&nbsp;&nbsp;</td>
+		  	<td><%=movie.duration%>&nbsp;&nbsp;</td>
+		  </tr>
+		<%end%>
+</table>
+

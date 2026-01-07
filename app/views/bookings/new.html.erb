@@ -1,2 +1,7 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<%= form_with model: @booking do |form| %>
+  <div>
+    <%= form.label :number_of_seats %>
+    <%= form.text_field :number_of_seats %>
+  </div>
+  <%= form.submit %>
+<% end %>

@@ -1,9 +1,8 @@
 class Movie < ApplicationRecord
-	has_one_attached :banner_image
-	has_many :bookings
+  has_many :shows, dependent: :destroy
 
-	validates :title, presence: true, uniqueness: true
-	validates :description presence: true
-	validates :duration, presence: true
-	validates :banner_image, presence: true
+  has_one_attached :banner_image
+
+  validates :title, presence: true
+  validates :duration, numericality: { greater_than: 0 }
 end

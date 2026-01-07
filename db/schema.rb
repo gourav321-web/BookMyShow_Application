@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_06_135901) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_07_112614) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,6 +45,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_06_135901) do
     t.integer "booking_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "show_id", null: false
+    t.index ["show_id"], name: "index_bookings_on_show_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -61,6 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_06_135901) do
     t.decimal "seat_price", precision: 7, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "movie_id", null: false
+    t.index ["movie_id"], name: "index_shows_on_movie_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,4 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_06_135901) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "shows"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "shows", "movies"
 end

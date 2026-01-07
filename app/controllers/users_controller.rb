@@ -1,23 +1,27 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:profile, :edit_profile, :update_profile]
+  skip_forgery_protection
+
   def new
+    @user = User.new
   end
 
   def create
-  end
+    @user = User.new(user_params)
 
-  def profile
-  end
+    if @user.save
+      token = encode_token({ user_id: @user.id })
+      cookies.signed[:jwt] = { value: token, httponly: true }
 
-  def edit_profile
-  end
-
-  def update_profile
+      UserMailer.welcome_email(@user).deliver_later
+      redirect_to movies_path, notice: "Account created successfully"
+    else
+      render :new, notice: "signup unsuccessfull"
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :digest_password :profile_picture, )
+    # params.require(:user).permit(:name, :email, :password, :password_confirmation :profile_picture)
   end
 end

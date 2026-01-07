@@ -2,12 +2,6 @@
 <h1>Log In</h1>
 
 <%= form_with(url: sessions_create_path, scope: :session, local: true) do |form| %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.email_field :name, placeholder: "email@example.com" %>
-  </div>
-
   <div class="field">
     <%= form.label :email %>
     <%= form.email_field :email, placeholder: "email@example.com" %>
@@ -16,11 +10,6 @@
   <div class="field">
     <%= form.label :password %>
     <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email, placeholder: "email@example.com" %>
   </div>
 
   <div class="actions">
